@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Board Fellows Lookbook 2026–27</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+/* Layout: masthead, sticky filter bar, then an A–Z index of orgs. Each row: letter · org · mission · 2Y → 1Y portrait pair. Yale classic palette. */
+:root{
+  --display:"Libre Caslon Text",Georgia,"Times New Roman",serif;
+  --body:"Source Sans 3","Segoe UI",system-ui,sans-serif;
+  --bg:#ffffff; --surface:#f5f7fa; --fg:#0f1d2e; --muted:#566476; --line:#d9dfe7;
+  --accent:#00356b; --accent-soft:#e3ebf4; --on-accent:#ffffff; --portrait:#eef2f7;
+  --a-edu:#286dc0; --a-hs:#7a4b9c; --a-arts:#b0413e; --a-env:#3b7a57; --a-pub:#a06d10; --a-none:#7b8794;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0c1523; --surface:#142135; --fg:#e7edf5; --muted:#9aa8ba; --line:#26364d;
+    --accent:#8db7ea; --accent-soft:#1b2f4a; --on-accent:#0c1523; --portrait:#1b2a40;
+    --a-edu:#7fb0ec; --a-hs:#c3a0e0; --a-arts:#ef928c; --a-env:#86c9a0; --a-pub:#e6bd6a; --a-none:#9aa6b4;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0c1523; --surface:#142135; --fg:#e7edf5; --muted:#9aa8ba; --line:#26364d;
+  --accent:#8db7ea; --accent-soft:#1b2f4a; --on-accent:#0c1523; --portrait:#1b2a40;
+  --a-edu:#7fb0ec; --a-hs:#c3a0e0; --a-arts:#ef928c; --a-env:#86c9a0; --a-pub:#e6bd6a; --a-none:#9aa6b4;
+  color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.55}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.wrap{max-width:1200px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+/* Masthead */
+.mast .wrap{padding-block:44px 0}
+.mast-inner{display:grid;gap:16px;border-bottom:2px solid var(--accent);padding-bottom:24px}
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--accent)}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(36px,6vw,60px);line-height:1.02;margin:0;text-wrap:balance;letter-spacing:-.01em}
+h1 em{color:var(--accent)}
+.mast-row{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap}
+.lede{max-width:60ch;color:var(--muted);margin:0;font-size:16px}
+.stats{display:flex;gap:28px;flex-wrap:wrap;font-variant-numeric:tabular-nums}
+.stat b{display:block;font-family:var(--display);font-size:28px;font-weight:400;line-height:1.1}
+.stat span{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700}
+
+/* Filter bar */
+.bar{position:relative;z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+@media (min-width:760px){.bar{position:sticky;top:env(safe-area-inset-top,0px)}}
+.bar .wrap{padding-block:12px;display:grid;gap:10px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.search{flex:1 1 240px;min-width:0;position:relative}
+.search input{width:100%;font:inherit;padding:9px 12px 9px 34px;border:1px solid var(--line);border-radius:2px;background:var(--surface);color:var(--fg)}
+.search input:focus{outline:2px solid var(--accent);outline-offset:1px}
+.search svg{position:absolute;left:11px;top:50%;transform:translateY(-50%);width:15px;height:15px;stroke:var(--muted);fill:none;stroke-width:2}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:7px;padding:6px 11px;border:1px solid var(--line);border-radius:999px;font-size:13px;font-weight:600;color:var(--fg);background:var(--bg);white-space:nowrap}
+.chip .dot{width:8px;height:8px;border-radius:50%;background:var(--c,var(--muted))}
+.chip .n{color:var(--muted);font-weight:400;font-variant-numeric:tabular-nums}
+.chip[aria-pressed="true"]{background:var(--accent-soft);border-color:var(--accent)}
+.chip:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.tabs{display:inline-flex;border:1px solid var(--line);border-radius:2px;overflow:hidden}
+.tabs button{all:unset;cursor:pointer;padding:8px 14px;font-size:13.5px;font-weight:600;color:var(--muted);background:var(--surface)}
+.tabs button+button{border-left:1px solid var(--line)}
+.tabs button[aria-selected="true"]{background:var(--accent);color:var(--on-accent)}
+.tabs button:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.result{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+
+/* Index rows */
+main .wrap{padding-block:8px 64px}
+.idx{display:flex;flex-direction:column}
+.entry{display:grid;grid-template-columns:44px minmax(0,300px) minmax(0,1fr) 360px;gap:28px;align-items:center;padding:22px 0;border-bottom:1px solid var(--line)}
+.letter{font-family:var(--display);font-size:30px;color:var(--accent);line-height:1;align-self:start;padding-top:2px}
+.org-head{display:flex;flex-direction:column;gap:6px;min-width:0}
+.org-head h2{margin:0;font-family:var(--display);font-weight:400;font-size:23px;line-height:1.2;text-wrap:balance}
+.area{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--c)}
+.area .dot{width:7px;height:7px;border-radius:50%;background:var(--c)}
+.site{font-size:13px;color:var(--accent);text-decoration:none;font-weight:600;overflow-wrap:anywhere}
+.site:hover{text-decoration:underline}
+.mission-wrap{min-width:0;display:flex;flex-direction:column;gap:4px}
+.mission{margin:0;color:var(--muted);font-size:14px;line-height:1.55}
+.mission.clamp{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.more{all:unset;cursor:pointer;font-size:12.5px;font-weight:600;color:var(--accent);align-self:flex-start}
+.more:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+.pair{display:flex;align-items:flex-start;gap:16px 20px;justify-content:flex-start;flex-wrap:wrap}
+.side{display:flex;gap:12px}
+.arrow{align-self:center;margin-top:-34px;color:var(--muted)}
+.arrow svg{display:block;width:26px;height:14px;fill:none;stroke:currentColor;stroke-width:1.5}
+.fellow{width:170px;display:flex;flex-direction:column;gap:3px;padding-top:10px;border-top:2px solid var(--accent);min-width:0}
+.portrait{width:76px;height:76px;border-radius:50%;background:var(--portrait);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:22px;color:var(--accent);border:2px solid var(--accent);overflow:hidden}
+.portrait img{width:100%;height:100%;object-fit:cover}
+.coh{font-size:10.5px;font-weight:700;letter-spacing:.08em;color:var(--accent)}
+.fname{font-family:var(--display);font-size:16px;line-height:1.25}
+.email{all:unset;cursor:pointer;font-size:11.5px;color:var(--muted);overflow-wrap:break-word;max-width:100%;line-height:1.3;border-bottom:1px dotted transparent}
+.email:hover{color:var(--accent);border-bottom-color:var(--accent)}
+.email:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+@media (max-width:980px){
+  .entry{grid-template-columns:36px minmax(0,1fr);gap:14px 18px;align-items:start}
+  .letter{grid-row:span 3}
+  .pair{justify-content:flex-start;flex-wrap:wrap}
+}
+@media (max-width:480px){
+  .fellow{width:calc(50% - 10px)}
+  .letter{font-size:24px}
+}
+
+/* Fellow directory */
+.dir{margin-top:20px;border:1px solid var(--line);overflow-x:auto;background:var(--bg)}
+table{border-collapse:collapse;width:100%;min-width:680px;font-size:14px}
+th{text-align:left;font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);font-weight:700;padding:11px 14px;background:var(--surface);border-bottom:1px solid var(--line)}
+th button{all:unset;cursor:pointer}
+th button:focus-visible{outline:2px solid var(--accent)}
+td{padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:middle}
+tr:last-child td{border-bottom:0}
+td.name{font-weight:600}
+td.name .in{display:flex;align-items:center;gap:10px}
+td .portrait{width:34px;height:34px;font-size:12px;border-width:1.5px;flex:none}
+.tag{display:inline-block;width:32px;font-size:11px;font-weight:700;letter-spacing:.04em;text-align:center;padding:2px 0;border-radius:3px}
+.tag.y1{background:var(--accent);color:var(--on-accent)}
+.tag.y2{border:1px solid var(--accent);color:var(--accent)}
+td .area{font-size:10.5px}
+td.em{white-space:nowrap}
+.empty{padding:48px 16px;text-align:center;color:var(--muted)}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--fg);color:var(--bg);padding:8px 16px;border-radius:999px;font-size:13px;font-weight:600;opacity:0;transition:opacity .2s;pointer-events:none}
+.toast.on{opacity:1}
+footer{border-top:1px solid var(--line);color:var(--muted);font-size:12.5px}
+footer .wrap{padding-block:18px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+
+
+<header class="mast">
+  <div class="wrap">
+    <div class="mast-inner">
+      <div class="eyebrow">Golub Capital Board Fellows · 2026–27</div>
+      <div class="mast-row">
+        <h1>Fellows <em>&amp;</em> Boards</h1>
+        <div class="stats" id="stats"></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="bar">
+  <div class="wrap">
+    <div class="row">
+      <div class="tabs" role="tablist" aria-label="View">
+        <button id="t-orgs" role="tab" data-v="orgs" aria-selected="true">By organization</button>
+        <button id="t-fellows" role="tab" data-v="fellows" aria-selected="false">All Fellows</button>
+      </div>
+      <label class="search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="q" type="search" placeholder="Search Fellows, organizations, missions" aria-label="Search"></label>
+      <div class="chips cohort" role="group" aria-label="Cohort">
+        <button class="chip" id="c-all" data-c="all" aria-pressed="true">All</button>
+        <button class="chip" id="c-1y" data-c="1Y" aria-pressed="false">1Y</button>
+        <button class="chip" id="c-2y" data-c="2Y" aria-pressed="false">2Y</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="chips" id="areas" role="group" aria-label="Focus area"></div>
+      <span class="result" id="result"></span>
+    </div>
+  </div>
+</div>
+
+<main><div class="wrap"><div id="view"></div></div></main>
+<footer><div class="wrap">Source: Board Fellows Tracker 2026–2027 (1Y Fellow Tracker, 2Y Project Tracker, Partner Orgs; list last modified 10/25/2026). DC Arts and Humanities Education Collaborative details from dccollaborative.org.</div></footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+const DATA = [{"name": "Achievement First - Amistad Academy", "area": "Education / Youth Development", "web": "https://www.achievementfirst.org", "mission": "Achievement First public charter schools prepare every student to excel in college and career, deepen their knowledge of self and community, and lead lives of purpose. In partnership with families and communities, the network works to disrupt the legacy of inequity in education.", "fellows": [{"n": "Kyle Yeh", "e": "kyle.yeh@yale.edu", "c": "1Y", "l": "Yeh"}, {"n": "Molly Lynch", "e": "molly.lynch@yale.edu", "c": "2Y", "l": "Lynch"}]}, {"name": "Achievement First - Elm City Prep", "area": "Education / Youth Development", "web": "https://www.achievementfirst.org", "mission": "Achievement First public charter schools prepare every student to excel in college and career, deepen their knowledge of self and community, and lead lives of purpose. In partnership with families and communities, the network works to disrupt the legacy of inequity in education, believing in the unlimited potential of its students to shape a more just society.", "fellows": [{"n": "Brian Fan", "e": "brian.fan@yale.edu", "c": "2Y", "l": "Fan"}]}, {"name": "Belmont News Foundation", "area": "Arts & Culture", "web": "https://www.belmontvoice.org", "mission": "To produce independent journalism that keeps the Belmont community connected, well-informed, and engaged through thorough, accurate, and fair coverage of the topics affecting life in their town.", "fellows": [{"n": "Ali Shahwar Kichloo", "e": "alishahwar.kichloo@yale.edu", "c": "1Y", "l": "Kichloo"}, {"n": "Leah Towery", "e": "leah.towery@yale.edu", "c": "2Y", "l": "Towery"}]}, {"name": "Benhaven", "area": "Education / Youth Development", "web": "https://www.benhaven.org", "mission": "Benhaven's mission is to enable people with autism and pervasive developmental disabilities to participate in community life, exercise productive control over their own lives, build meaningful relationships, be gainfully employed, and experience happiness and personal satisfaction.", "fellows": [{"n": "Rakshita Podagatlapalli", "e": "rakshita.podagatlapalli@yale.edu", "c": "1Y", "l": "Podagatlapalli"}, {"n": "Arushi Dixit", "e": "arushi.dixit@yale.edu", "c": "2Y", "l": "Dixit"}]}, {"name": "Boundless Literacy", "area": "Education / Youth Development", "web": "https://www.boundlessliteracy.org", "mission": "Boundless Literacy ensures that every child—regardless of circumstances, background, or zip code—has access to effective, evidence-based reading instruction. Working in partnership with schools and families, it empowers developing readers and unlocks their potential. Its vision is a world where every child can read.", "fellows": [{"n": "Vishal Basava", "e": "vishal.basava@yale.edu", "c": "1Y", "l": "Basava"}, {"n": "Rebecca Luo", "e": "rebecca.luo@yale.edu", "c": "2Y", "l": "Luo"}]}, {"name": "BuildGreenCT", "area": "Environment", "web": "https://www.buildgreenct.org", "mission": "BuildGreenCT works to accelerate the just and sustainable transformation of the built environment through education, advocacy, and community building. It showcases green building strategies and advances high-performance design and construction across Connecticut through conferences such as the Northeast Summit for a Sustainable Built Environment, site tours, continuing education, networking events, and the Green Building Awards.", "fellows": [{"n": "Ayush Rajpal", "e": "ayush.rajpal@yale.edu", "c": "1Y", "l": "Rajpal"}]}, {"name": "Central Connecticut Coast YMCA", "area": "Human Services", "web": "https://www.cccymca.org", "mission": "The Central Connecticut Coast YMCA builds stronger communities through youth development, healthy living, and social responsibility. Its work spans health and wellness, childcare, housing, and food insecurity.", "fellows": [{"n": "Olivia Obodoagha", "e": "olivia.obodoagha@yale.edu", "c": "1Y", "l": "Obodoagha"}, {"n": "Tiera Williams", "e": "tiera.williams@yale.edu", "c": "2Y", "l": "Williams"}]}, {"name": "Change in the Air Foundation (CITA)", "area": "Education / Youth Development", "web": "https://www.changetheairfoundation.org", "mission": "Change in the Air Foundation works to diversify the beverage industry and build new, culture-driven spaces for people to gather. Through fundraising, scholarships for African American brewers, and community events, it advances cultural and social equity.", "fellows": [{"n": "Deidra Pinnock", "e": "deidra.pinnock@yale.edu", "c": "2Y", "l": "Pinnock"}]}, {"name": "City Atlas", "area": "Environment", "web": "https://newyork.thecityatlas.org", "mission": "City Atlas works to make the world energy- and climate-literate. Its projects include a collaborative game that teaches energy and is used in high schools and universities worldwide, and a podcast in which climate experts are interviewed by high school students.", "fellows": [{"n": "Scott Brankin", "e": "scott.brankin@yale.edu", "c": "1Y", "l": "Brankin"}, {"n": "Helen Citterio", "e": "helen.citterio@yale.edu", "c": "2Y", "l": "Citterio"}]}, {"name": "City Parks Foundation", "area": "Environment", "web": "https://cityparksfoundation.org", "mission": "City Parks Foundation invigorates and transforms parks into dynamic centers of urban life through sports, arts, community-building, and education programs for all New Yorkers. Its programs reach 285,000 people each year across more than 400 parks, recreation centers, and public schools. Its ethos is simple: thriving parks mean thriving communities.", "fellows": [{"n": "Nicole Shahid", "e": "nicole.shahid@yale.edu", "c": "1Y", "l": "Shahid"}, {"n": "Will Fulbrook Hanna", "e": "will.fulbrookhanna@yale.edu", "c": "2Y", "l": "Fulbrook Hanna"}]}, {"name": "CitySeed", "area": "Public Goods", "web": "https://www.cityseed.org", "mission": "CitySeed engages the community in growing a local food system that promotes economic development, community development, and sustainable agriculture.", "fellows": [{"n": "Megan Tachev", "e": "megan.tachev@yale.edu", "c": "1Y", "l": "Tachev"}, {"n": "Alex Papadakis", "e": "alex.papadakis@yale.edu", "c": "2Y", "l": "Papadakis"}, {"n": "Izzy Goldstein", "e": "izzy.goldstein@yale.edu", "c": "2Y", "l": "Goldstein"}]}, {"name": "Collective for Refugee and Immigrant Women's Wellbeing (CRIW)", "area": "Human Services", "web": "https://www.criwct.org", "mission": "Focusing on particularly marginalized refugee populations, CRIW works to shift power and fuel systemic change, solving long-standing challenges by breaking barriers at the grassroots level. Its community-led initiatives and cross-sector partnerships model what's possible when those most impacted shape the systems meant to serve them.", "fellows": [{"n": "Ignacio Sanchez Urdaneta", "e": "ignacio.sanchezurdaneta@yale.edu", "c": "1Y", "l": "Sanchez Urdaneta"}, {"n": "Sara Bloem", "e": "sara.bloem@yale.edu", "c": "2Y", "l": "Bloem"}]}, {"name": "Columbus House", "area": "Human Services", "web": "https://www.columbushouse.org", "mission": "Columbus House serves people experiencing homelessness, or at imminent risk of it, by providing life-saving outreach, shelter, and housing while fostering personal growth and independence. It also advocates for and creates affordable housing to end homelessness in its communities.", "fellows": [{"n": "Eytan Deener-Agus", "e": "eytan.deener-agus@yale.edu", "c": "2Y", "l": "Deener-Agus"}]}, {"name": "Community Dining Room (CDR)", "area": "Human Services", "web": "https://www.communitydiningroom.org", "mission": "The Community Dining Room provides meals and supports the basic human needs of its community through nutritional programs.", "fellows": [{"n": "Saachi Wadhwani", "e": "saachi.wadhwani@yale.edu", "c": "1Y", "l": "Wadhwani"}, {"n": "David Madero", "e": "david.madero@yale.edu", "c": "2Y", "l": "Madero"}]}, {"name": "Connecticut Community Empowerment Foundation (CCEF) DBA ReRead Books", "area": "Education / Youth Development", "web": "https://www.rereadbooksellers.org", "mission": "The Connecticut Community Empowerment Foundation, operating as ReRead Books & More, raises awareness and acceptance of individuals with intellectual, developmental, and physical disabilities. It provides integrated employment training and job-skill development for people with special needs, along with educational and social programs focused on independent living.", "fellows": [{"n": "Simrah Palla", "e": "simrah.palla@yale.edu", "c": "1Y", "l": "Palla"}, {"n": "Mariam Hassoun", "e": "mariam.hassoun@yale.edu", "c": "2Y", "l": "Hassoun"}]}, {"name": "Connecticut Veterans Legal Center (CVLC)", "area": "Human Services", "web": "https://www.ctveteranslegal.org", "mission": "The Connecticut Veterans Legal Center works to empower, support, and improve the lives of Connecticut veterans by providing free legal assistance that helps them overcome barriers to housing, healthcare, income, and recovery.", "fellows": [{"n": "Manuel Schmidt Meyer", "e": "manuel.schmidtmeyer@yale.edu", "c": "1Y", "l": "Schmidt Meyer"}, {"n": "Holly Briffa", "e": "holly.briffa@yale.edu", "c": "2Y", "l": "Briffa"}]}, {"name": "Connex Credit Union", "area": "Human Services", "web": "https://www.connexcu.org", "mission": "Connex is a member-owned credit union dedicated to improving the financial well-being of its members, employees, and the communities it serves. It offers consumer savings and checking accounts; auto, home, and personal loans; and financial education.", "fellows": [{"n": "Doug Palmer", "e": "doug.palmer@yale.edu", "c": "1Y", "l": "Palmer"}, {"n": "Alison Yee", "e": "alison.yee@yale.edu", "c": "2Y", "l": "Yee"}]}, {"name": "CT Food Launchpad", "area": "Human Services", "web": "https://www.ctfoodlaunchpad.com", "mission": "To connect Connecticut's food entrepreneurship ecosystem.", "fellows": [{"n": "Brandon Shi", "e": "brandon.shi@yale.edu", "c": "1Y", "l": "Shi"}]}, {"name": "DC Arts and Humanities Education Collaborative", "area": "Education / Youth Development", "web": "https://dccollaborative.org", "mission": "The DC Arts and Humanities Education Collaborative is a member service organization that works to give every DC public and public charter school student equitable access to culturally relevant, curriculum-based arts and humanities experiences. Through programs like Arts for Every Student and professional development for teachers and teaching artists, it has reached more than 750,000 students since 1998.", "fellows": [{"n": "Adama Kamara", "e": "adama.kamara@yale.edu", "c": "2Y", "l": "Kamara"}]}, {"name": "Downtown Evening Soup Kitchen (DESK)", "area": "Human Services", "web": "https://www.deskct.org", "mission": "Downtown Evening Soup Kitchen serves people experiencing homelessness or living in poverty by providing food assistance and services that promote health, community, and equity.", "fellows": [{"n": "Alan Wu", "e": "alan.wu@yale.edu", "c": "1Y", "l": "Wu"}, {"n": "Riya Bhattacharya", "e": "riya.bhattacharya@yale.edu", "c": "2Y", "l": "Bhattacharya"}]}, {"name": "Eli Whitney Museum", "area": "Arts & Culture", "web": "https://www.eliwhitney.org", "mission": "The Eli Whitney Museum & Workshop is an experimental learning workshop for students, teachers, and families. It collects, interprets, and teaches the experiments that are the roots of design and invention.", "fellows": [{"n": "Anthony Qiao", "e": "anthony.qiao@yale.edu", "c": "1Y", "l": "Qiao"}, {"n": "Camila Ortiz Silva", "e": "camila.ortizsilva@yale.edu", "c": "2Y", "l": "Ortiz Silva"}]}, {"name": "Ely Center of Contemporary Art", "area": "Arts & Culture", "web": "https://www.elycenter.org", "mission": "The Ely Center of Contemporary Art is a 501(c)(3) nonprofit dedicated to presenting contemporary art exhibitions and events—challenging, conceptual, and provocative—that are inclusive and diverse. Its programming promotes dialogue around global and community issues.", "fellows": [{"n": "Araceli Lopez", "e": "araceli.lopez@yale.edu", "c": "1Y", "l": "Lopez"}, {"n": "Mo Liu", "e": "mo.n.liu@yale.edu", "c": "2Y", "l": "Liu"}]}, {"name": "EMERGE Connecticut, Inc.", "area": "Human Services", "web": "https://www.emergect.net", "mission": "EMERGE Connecticut is a self-sustaining social enterprise committed to helping formerly incarcerated people successfully reintegrate into their families and communities.", "fellows": [{"n": "Kelly Ann Enright", "e": "kelly.enright@yale.edu", "c": "1Y", "l": "Enright"}, {"n": "Tamari Dzotsenidze", "e": "tamari.dzotsenidze@yale.edu", "c": "2Y", "l": "Dzotsenidze"}]}, {"name": "Friends Center for Children", "area": "Education / Youth Development", "web": "https://www.friendscenterforchildren.org", "mission": "Friends Center for Children provides full-time, year-round early childhood education for 230+ children from infancy through kindergarten across four New Haven sites. Guided by Quaker values, it works to educate children, empower families, inspire teachers, engage community, embrace diversity, and embody equity. Its model pairs sliding-scale tuition with educator housing so it can pay educators a living wage, and it advocates statewide and nationally for full funding of quality early care.", "fellows": [{"n": "Renee White", "e": "r.white@yale.edu", "c": "1Y", "l": "White"}]}, {"name": "Gather New Haven", "area": "Environment", "web": "https://www.gathernewhaven.org", "mission": "Gather New Haven promotes health, equity, and justice for people and the environment by cultivating connections among neighbors and with local lands and waters. It inspires people to care for themselves, their community, and the natural world.", "fellows": [{"n": "Tintin Hsieh", "e": "tintin.hsieh@yale.edu", "c": "1Y", "l": "Hsieh"}, {"n": "Chadwick Pingel", "e": "chadwick.pingel@yale.edu", "c": "2Y", "l": "Pingel"}]}, {"name": "Havenly", "area": "Human Services", "web": "https://www.havenlynhv.org", "mission": "Havenly builds the community power of refugee and immigrant women. It provides paid job training in hospitality, healthcare, and the food industry, alongside community leadership and cooperative development.", "fellows": [{"n": "Maiya Cook", "e": "maiya.cook@yale.edu", "c": "2Y", "l": "Cook"}]}, {"name": "Higher Heights (Youth Empowerment Programs, Inc.)", "area": "Education / Youth Development", "web": "https://www.higherheightsyouth.net", "mission": "Higher Heights Youth Empowerment Programs empowers, encourages, and equips college-bound students to obtain a post-secondary education. Through statewide outreach, initiatives, and partnerships with schools and businesses, it helps under-represented Connecticut students gain full and equal access to college-preparatory resources and become leaders in their communities.", "fellows": [{"n": "Melvin Oshomegie", "e": "melvin.oshomegie@yale.edu", "c": "1Y", "l": "Oshomegie"}, {"n": "Gabby Valencia", "e": "gabriela.valencia@yale.edu", "c": "2Y", "l": "Valencia"}]}, {"name": "Horizons at Foote", "area": "Education / Youth Development", "web": "https://www.horizonsatfoote.org", "mission": "Horizons at Foote works to advance educational equity and the joy of learning for New Haven public school students.", "fellows": [{"n": "Josh Liang", "e": "josh.liang@yale.edu", "c": "1Y", "l": "Liang"}, {"n": "Luke McPhillips", "e": "luke.mcphillips@yale.edu", "c": "2Y", "l": "McPhillips"}]}, {"name": "James Blackstone Memorial Library", "area": "Public Goods", "web": "https://www.blackstonelibrary.org", "mission": "The James Blackstone Memorial Library inspires and enriches curious minds and connects the community by providing essential access to information, resources, and unique shared experiences that help people learn, succeed, and thrive.", "fellows": [{"n": "Isha Shah", "e": "isha.shah@yale.edu", "c": "1Y", "l": "Shah"}, {"n": "Thomas Gould", "e": "thomas.gould@yale.edu", "c": "2Y", "l": "Gould"}]}, {"name": "LEAP (Leadership, Education and Athletics in Partnership, Inc.)", "area": "Education / Youth Development", "web": "https://www.leapforkids.org", "mission": "LEAP develops the strengths and talents of young leaders who design and run year-round, neighborhood-based programs that drive positive academic and social outcomes for children living in New Haven's high-poverty urban neighborhoods.", "fellows": [{"n": "Jennifer Zhang", "e": "ruoxin.zhang@yale.edu", "c": "1Y", "l": "Zhang"}, {"n": "Leslie Nut-Komlah", "e": "leslie.nut-komlah@yale.edu", "c": "2Y", "l": "Nut-Komlah"}]}, {"name": "Leila Day Nursery", "area": "Education / Youth Development", "web": "https://www.leiladay.org", "mission": "Leila Day Nursery provides the very best in progressive early childhood education, helping all children tap into their full potential. Its programs are accessible to families regardless of income.", "fellows": [{"n": "Alex Kew", "e": "alex.kew@yale.edu", "c": "1Y", "l": "Kew"}, {"n": "Saanchi Agarwal", "e": "saanchi.agarwal@yale.edu", "c": "2Y", "l": "Agarwal"}]}, {"name": "Long Wharf Theatre", "area": "Arts & Culture", "web": "https://www.longwharf.org", "mission": "Theatre for everyone. Long Wharf Theatre is dedicated to producing boundary-breaking theatre with and for its many, kaleidoscopic communities.", "fellows": [{"n": "Trisha Bhatia", "e": "trisha.bhatia@yale.edu", "c": "2Y", "l": "Bhatia"}]}, {"name": "Lost in New Haven", "area": "Arts & Culture", "web": "https://www.lostinnewhaven.org", "mission": "Through tangible artifacts and creative immersion, Lost in New Haven fosters wonder, respect, and appreciation for the diverse, multicultural tapestry of New Haven, Connecticut. Built by immigrants on the unceded land of the indigenous Quinnipiac peoples, the city embodies what the organization calls the ultimate American story, and it is committed to presenting this history. It offers all people a platform to tell a collective story rooted in common ground, discourse, and community.", "fellows": [{"n": "Ishanya Anthapur", "e": "ishanya.anthapur@yale.edu", "c": "1Y", "l": "Anthapur"}, {"n": "Adam Vieira", "e": "adam.vieira@yale.edu", "c": "2Y", "l": "Vieira"}]}, {"name": "Lumibility", "area": "Human Services", "web": "https://www.lumibility.org", "mission": "Lumibility works to enhance skills and transform lives for individuals with differing abilities. It offers day and employment supports for people with intellectual and developmental disabilities, as well as Birth-to-Three early intervention services.", "fellows": [{"n": "Quinn Peacock", "e": "quinn.peacock@yale.edu", "c": "1Y", "l": "Peacock"}, {"n": "Juanita Penuela", "e": "juanita.penuela@yale.edu", "c": "2Y", "l": "Penuela"}]}, {"name": "MakeHaven Inc.", "area": "Arts & Culture", "web": "https://www.makehaven.org", "mission": "MakeHaven equips people with the tools to design, invent, and create. It operates a 24/7 community makerspace and offers classes on the use of its tools and equipment.", "fellows": [{"n": "Gavin Pak", "e": "gavin.pak@yale.edu", "c": "1Y", "l": "Pak"}, {"n": "Katherine Ahn", "e": "katherine.ahn@yale.edu", "c": "2Y", "l": "Ahn"}]}, {"name": "New Haven Pride Center", "area": "Arts & Culture", "web": "https://www.newhavenpridecenter.org", "mission": "The New Haven Pride Center co-creates a space that empowers the Greater New Haven LGBTQIA+ community not just to survive, but to thrive and uplift one another and their voices.", "fellows": [{"n": "Uliya Yashtala", "e": "uliya.yashtala@yale.edu", "c": "1Y", "l": "Yashtala"}, {"n": "Emma Pred-Sosa", "e": "emma.pred-sosa@yale.edu", "c": "2Y", "l": "Pred-Sosa"}]}, {"name": "New Haven Reads", "area": "Education / Youth Development", "web": "https://www.newhavenreads.org", "mission": "Founded to share the joy and power of reading, New Haven Reads partners with the community to provide free one-on-one tutoring, educational family support, and a book bank. Together these programs empower aspiring readers to master the literacy skills they need to thrive in school and life.", "fellows": [{"n": "Meg Nelluri", "e": "meg.nelluri@yale.edu", "c": "1Y", "l": "Nelluri"}, {"n": "Richard Xu", "e": "richard.xu@yale.edu", "c": "2Y", "l": "Xu"}]}, {"name": "New Haven Urban Design League", "area": "Public Goods", "web": "https://www.urbandesignleague.org", "mission": "The New Haven Urban Design League believes the quality of the built environment is critical to human happiness and a civil society. Through research, education, and advocacy, it works to protect and enhance New Haven's environment and urban design, supporting projects that sustain the city's environment, culture, beauty, and economic health.", "fellows": [{"n": "Bobby Daly", "e": "r.daly@yale.edu", "c": "1Y", "l": "Daly"}]}, {"name": "New HYTES, Inc", "area": "Education / Youth Development", "web": "https://www.newhytes.org", "mission": "New HYTES works to positively shape the futures of New Haven's underserved youth through educational support and the benefits of a healthy lifestyle, using the sport of tennis.", "fellows": [{"n": "Tyson Zhang", "e": "tyson.zhang@yale.edu", "c": "1Y", "l": "Zhang"}, {"n": "Gurmehr Marwah", "e": "gurmehr.marwah@yale.edu", "c": "2Y", "l": "Marwah"}]}, {"name": "Shubert Theatre", "area": "Arts & Culture", "web": "https://www.shubert.com", "mission": "CAPA/Shubert Theatre-New Haven operates and preserves the historic Shubert Theatre as a world-class performing arts center, presenting international, national, and local programming across all genres. It builds diverse audiences through education and outreach, strengthens the arts community through partnership and advocacy, and supports the local economy through the artists and audiences it brings to New Haven.", "fellows": [{"n": "Emma Ventresca", "e": "emma.ventresca@yale.edu", "c": "1Y", "l": "Ventresca"}]}, {"name": "Site Projects", "area": "Arts & Culture", "web": "https://www.siteprojects.org", "mission": "To create meaningful public art experiences for the New Haven community", "fellows": [{"n": "Kay Nilest", "e": "kay.nilest@yale.edu", "c": "1Y", "l": "Nilest"}]}, {"name": "Squash Haven Inc.", "area": "Education / Youth Development", "web": "https://www.squashhaven.org", "mission": "Squash Haven empowers New Haven youth to strive for and maintain school success and physical wellness, and to forge a path through higher education to engaged citizenship.", "fellows": [{"n": "Hudson Ozello", "e": "hudson.ozello@yale.edu", "c": "1Y", "l": "Ozello"}]}, {"name": "Teach for America CT", "area": "Education / Youth Development", "web": "https://www.teachforamerica.org/connecticut", "mission": "Teach For America finds, develops, and supports extraordinary leaders who work to transform education and expand opportunity for all children.", "fellows": [{"n": "Shraya Sapru", "e": "shraya.sapru@yale.edu", "c": "1Y", "l": "Sapru"}, {"n": "Kate Lowenstein", "e": "kate.lowenstein@yale.edu", "c": "2Y", "l": "Lowenstein"}]}, {"name": "The Towers (at Tower Lane)", "area": "Human Services", "web": "https://www.towerlane.org", "mission": "The Towers is a warm, vibrant senior community—infused with Jewish values—where people live their best lives. As an inclusive community, it puts the person before the task and embraces innovative ways to help people keep growing, learning, and celebrating life.", "fellows": [{"n": "Gabi Saven", "e": "gabriella.saven@yale.edu", "c": "1Y", "l": "Saven"}, {"n": "Veronica Leifer", "e": "veronica.leifer@yale.edu", "c": "2Y", "l": "Leifer"}]}, {"name": "The Trust for Public Land (NY)", "area": "Environment", "web": "https://www.tpl.org", "mission": "The Trust for Public Land connects everyone to the outdoors, creating parks and protecting land for people.", "fellows": [{"n": "Tamer Sullivan", "e": "tamer.sullivan@yale.edu", "c": "1Y", "l": "Sullivan"}, {"n": "Azara Rosenow", "e": "azara.rosenow@yale.edu", "c": "2Y", "l": "Rosenow"}]}, {"name": "United Way of Greater New Haven", "area": "Human Services", "web": "https://www.uwgnh.org", "mission": "United Way of Greater New Haven brings people and organizations together to create solutions to the region's most pressing challenges in education, health, and financial stability, grounded in racial and social justice.", "fellows": [{"n": "Paul Willems", "e": "paul.willems@yale.edu", "c": "1Y", "l": "Willems"}, {"n": "Lucy Brice", "e": "lucy.brice@yale.edu", "c": "2Y", "l": "Brice"}]}, {"name": "Wallingford Public Library", "area": "Public Goods", "web": "https://www.wallingfordlibrary.org", "mission": "Wallingford Public Library connects people with ideas, experiences, and each other to inspire, enrich, and inform.", "fellows": [{"n": "Jasmine Lin", "e": "Jasmine.Lin@yale.edu", "c": "1Y", "l": "Lin"}, {"n": "Emily D’Arco", "e": "emily.darco@yale.edu", "c": "2Y", "l": "D’Arco"}]}, {"name": "Women & Family Life Center", "area": "Human Services", "web": "https://www.womenandfamilylifecenter.org", "mission": "The Women & Family Life Center supports and empowers women and all families through challenging life transitions. It offers personalized guidance and referrals, support groups, and interactive workshops that promote resilience and self-discovery.", "fellows": [{"n": "Sam Parks", "e": "Sam.parks@yale.edu", "c": "1Y", "l": "Parks"}, {"n": "Becky Milner", "e": "becky.milner@yale.edu", "c": "2Y", "l": "Milner"}]}, {"name": "Yale-China Association", "area": "Arts & Culture", "web": "https://www.yalechina.org", "mission": "Yale-China promotes understanding between the United States and China. It advances this mission through cooperative programs in education, health, and the arts.", "fellows": [{"n": "Wen Ding", "e": "w.ding@yale.edu", "c": "1Y", "l": "Ding"}, {"n": "Jake Chang", "e": "jake.chang@yale.edu", "c": "2Y", "l": "Chang"}]}];
+const AREAS = [
+  ["Education / Youth Development","--a-edu","Education & Youth"],
+  ["Human Services","--a-hs","Human Services"],
+  ["Arts & Culture","--a-arts","Arts & Culture"],
+  ["Environment","--a-env","Environment"],
+  ["Public Goods","--a-pub","Public Goods"],
+  ["","--a-none","Not listed"]
+];
+const areaVar = a => (AREAS.find(x=>x[0]===a)||AREAS[5])[1];
+const areaLabel = a => (AREAS.find(x=>x[0]===a)||AREAS[5])[2];
+const st = {view:"orgs", q:"", cohort:"all", areas:new Set(), sort:"name"};
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const host = u => u.replace(/^https?:\/\/(www\.)?/,"").replace(/\/$/,"");
+const initials = f => { const first = f.n.slice(0, f.n.length - f.l.length).trim() || f.n; return (first[0] + (f.l[0]||"")).toUpperCase(); };
+const emHtml = e => esc(e).replace('@','<wbr>@');
+
+const allFellows = DATA.flatMap(o => o.fellows.map(f => ({...f, org:o.name, area:o.area})));
+
+const c1 = allFellows.filter(f=>f.c==="1Y").length, c2 = allFellows.filter(f=>f.c==="2Y").length;
+$("#stats").innerHTML = [[DATA.length,"Partner orgs"],[c1,"1Y Fellows"],[c2,"2Y Fellows"]]
+  .map(([n,l])=>`<div class="stat"><b>${n}</b><span>${l}</span></div>`).join("");
+
+const counts = {}; DATA.forEach(o=>counts[o.area]=(counts[o.area]||0)+1);
+$("#areas").innerHTML = AREAS.filter(a=>counts[a[0]]).map(a =>
+  `<button class="chip" id="a-${a[1].slice(4)}" data-a="${esc(a[0])}" aria-pressed="false" style="--c:var(${a[1]})"><span class="dot"></span>${a[2]} <span class="n">${counts[a[0]]}</span></button>`).join("");
+
+const matchFellow = f => st.cohort==="all" || f.c===st.cohort;
+function textHit(o, f){
+  if(!st.q) return true;
+  const q = st.q.toLowerCase();
+  const hay = f ? [f.n,f.e,f.org].join(" ") : [o.name,o.mission,o.area,...o.fellows.map(x=>x.n+" "+x.e)].join(" ");
+  return hay.toLowerCase().includes(q);
+}
+const areaHit = a => !st.areas.size || st.areas.has(a);
+const portrait = (f, cls="") => `<span class="portrait ${cls}" aria-hidden="true">${f.photo?`<img src="${esc(f.photo)}" alt="">`:esc(initials(f))}</span>`;
+const fellowCard = f => `<div class="fellow">
+  <span class="coh">${f.c} · ${f.c==="2Y"?"CLASS OF ’27":"CLASS OF ’28"}</span>
+  <span class="fname">${esc(f.n)}</span>
+  ${f.e?`<button class="email" data-e="${esc(f.e)}" title="Copy email">${emHtml(f.e)}</button>`:""}</div>`;
+
+function renderOrgs(){
+  const list = DATA.filter(o => areaHit(o.area) && textHit(o) && o.fellows.some(matchFellow));
+  $("#result").textContent = `${list.length} of ${DATA.length} organizations`;
+  if(!list.length) return `<div class="empty">No organizations match these filters. Clear the search or pick another focus area.</div>`;
+  let prev = "";
+  return `<div class="idx">${list.map(o => {
+    const L = o.name[0].toUpperCase(); const showL = L!==prev; prev = L;
+    const y2 = o.fellows.filter(f=>f.c==="2Y" && matchFellow(f)), y1 = o.fellows.filter(f=>f.c==="1Y" && matchFellow(f));
+    const pair = [...y1, ...y2].map(fellowCard).join("");
+    return `<article class="entry" style="--c:var(${areaVar(o.area)})">
+      <div class="letter" aria-hidden="true">${showL?L:""}</div>
+      <div class="org-head">
+        <h2>${esc(o.name)}</h2>
+        <span class="area"><span class="dot"></span>${areaLabel(o.area)}</span>
+        ${o.web?`<a class="site" href="${esc(o.web)}" target="_blank" rel="noopener">${esc(host(o.web))} ↗</a>`:""}
+      </div>
+      <div class="mission-wrap">${o.mission?`<p class="mission clamp">${esc(o.mission)}</p>${o.mission.length>200?'<button class="more">Read full mission</button>':''}`:""}</div>
+      <div class="pair">${pair}</div>
+    </article>`;}).join("")}</div>`;
+}
+
+function renderFellows(){
+  let list = allFellows.filter(f => matchFellow(f) && areaHit(f.area) && textHit({}, f));
+  const key = {name:f=>f.l+" "+f.n, cohort:f=>f.c+f.l, org:f=>f.org+f.c, area:f=>areaLabel(f.area)+f.org}[st.sort];
+  list.sort((a,b)=>key(a).localeCompare(key(b)));
+  $("#result").textContent = `${list.length} of ${allFellows.length} Fellows`;
+  if(!list.length) return `<div class="empty">No Fellows match these filters. Clear the search or pick another focus area.</div>`;
+  const th = (k,l) => `<th><button data-sort="${k}">${l}${st.sort===k?" ↓":""}</button></th>`;
+  return `<div class="dir"><table><thead><tr>${th("name","Fellow")}${th("cohort","Cohort")}${th("org","Organization")}${th("area","Focus area")}<th>Email</th></tr></thead><tbody>
+  ${list.map(f=>`<tr><td class="name">${esc(f.n)}</td><td><span class="tag ${f.c==="1Y"?"y1":"y2"}">${f.c}</span></td><td>${esc(f.org)}</td>
+  <td><span class="area" style="--c:var(${areaVar(f.area)})"><span class="dot"></span>${areaLabel(f.area)}</span></td>
+  <td class="em">${f.e?`<button class="email" data-e="${esc(f.e)}" title="Copy email">${esc(f.e)}</button>`:""}</td></tr>`).join("")}
+  </tbody></table></div>`;
+}
+
+function render(){
+  $("#view").innerHTML = st.view==="orgs" ? renderOrgs() : renderFellows();
+  document.querySelectorAll(".tabs button").forEach(b=>b.setAttribute("aria-selected", b.dataset.v===st.view));
+}
+
+document.querySelectorAll(".tabs button").forEach(b=>b.onclick=()=>{st.view=b.dataset.v; history.replaceState(null,"","#"+st.view); render();});
+$("#q").oninput = e => {st.q=e.target.value.trim(); render();};
+document.querySelectorAll(".cohort .chip").forEach(b=>b.onclick=()=>{
+  st.cohort=b.dataset.c; document.querySelectorAll(".cohort .chip").forEach(x=>x.setAttribute("aria-pressed",x===b)); render();});
+$("#areas").onclick = e => { const b=e.target.closest(".chip"); if(!b) return;
+  const a=b.dataset.a; st.areas.has(a)?st.areas.delete(a):st.areas.add(a); b.setAttribute("aria-pressed",st.areas.has(a)); render(); };
+let tt;
+function toast(m){const t=$("#toast"); t.textContent=m; t.classList.add("on"); clearTimeout(tt); tt=setTimeout(()=>t.classList.remove("on"),1800);}
+function selectText(el){const r=document.createRange(); r.selectNodeContents(el); const s=getSelection(); s.removeAllRanges(); s.addRange(r); toast("Email selected. Press Ctrl/⌘+C to copy.");}
+$("#view").onclick = e => {
+  const m=e.target.closest(".more");
+  if(m){const p=m.previousElementSibling; const open=p.classList.toggle("clamp"); m.textContent=open?"Read full mission":"Show less"; return;}
+  const s=e.target.closest("[data-sort]"); if(s){st.sort=s.dataset.sort; render(); return;}
+  const c=e.target.closest(".email"); if(c){
+    const em=c.dataset.e;
+    try{ navigator.clipboard.writeText(em).then(()=>toast("Copied "+em),()=>selectText(c)); }catch(_){ selectText(c); }
+  }
+};
+function fromHash(){ const h=location.hash.slice(1); if(h==="orgs"||h==="fellows") st.view=h; render(); }
+addEventListener("hashchange", fromHash);
+fromHash();
+</script>
+
+</body>
+</html>
